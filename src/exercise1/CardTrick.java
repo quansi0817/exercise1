@@ -6,7 +6,6 @@ package exercise1;
  * To be used as starting code in Exercise
  *
  * @author Sichao Quan
- * @author Paul Bonenfant Jan 25, 2022 
  */
 import java.util.Random;
 import java.util.Scanner;
@@ -69,14 +68,14 @@ public class CardTrick {
     /**
      * A simple method to print out personal information. Follow the instructions to 
      * replace this information with your own.
-     * @author Sichao  May 2023
+     * @author Sichao Quan  May 2023
      */
     private static void printInfo() {
     
         System.out.println("Congratulations, you guessed right!");
         System.out.println();
         
-        System.out.println("My name is Sichao Quan");
+        System.out.println("My name is Sichao");
         System.out.println();
         
         System.out.println("My career ambitions: ");
