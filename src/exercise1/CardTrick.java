@@ -5,7 +5,7 @@ package exercise1;
  * It then searches the array of cards for the match to the user's card. 
  * To be used as starting code in Exercise
  *
- * @author Sichao Quan
+ * @author Sichao Quan0817
  */
 import java.util.Random;
 import java.util.Scanner;
