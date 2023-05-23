@@ -5,9 +5,11 @@ package exercise1;
  * It then searches the array of cards for the match to the user's card. 
  * To be used as starting code in Exercise
  *
- * @author dancye
+ * @author Sichao Quan
  * @author Paul Bonenfant Jan 25, 2022 
  */
+import java.util.Random;
+import java.util.Scanner;
 public class CardTrick {
     
     public static void main(String[] args) {
@@ -21,8 +23,37 @@ public class CardTrick {
             //card.setSuit(Card.SUITS[insert call to random number between 0-3 here])
             // Hint: You can use Random -> random.nextInt(n) to get a random number between 0 and n-1 (inclusive)
             //       Don't worry about duplicates at this point
+            Random random = new Random();
+            card.setValue(random.nextInt(13) + 1);  // Random value from 1 to 13
+            card.setSuit(Card.SUITS[random.nextInt(4)]);  // Random suit from the Card.SUITS array
+            hand[i] = card;
+        
         }
+        Scanner scanner = new Scanner(System.in);
 
+        System.out.print("Enter your card value (1-10, 11 for Jack, 12 for Queen, 13 for King): ");
+        int value = scanner.nextInt();
+
+        System.out.print("Enter your card suit (1 for Hearts, 2 for Diamonds, 3 for Clubs, 4 for Spades): ");
+        int suitIndex = scanner.nextInt() - 1;
+        String suit = Card.SUITS[suitIndex];
+
+        Card userCard = new Card();
+        userCard.setValue(value);
+        userCard.setSuit(suit);
+        
+        boolean foundMatch = false;
+
+        for (Card card : hand) {
+        if (card.getValue() == userCard.getValue() && card.getSuit().equals(userCard.getSuit())) {
+        foundMatch = true;
+        break;
+    }
+    }
+
+        if (foundMatch) {
+        printInfo();
+    }
         // insert code to ask the user for Card value and suit, create their card
         // and search the hand here. 
         // Hint: You can ask for values 1 to 10, and then
@@ -38,22 +69,22 @@ public class CardTrick {
     /**
      * A simple method to print out personal information. Follow the instructions to 
      * replace this information with your own.
-     * @author Paul Bonenfant Jan 2022
+     * @author Sichao  May 2023
      */
     private static void printInfo() {
     
         System.out.println("Congratulations, you guessed right!");
         System.out.println();
         
-        System.out.println("My name is Paul, but you can call me prof, Paul or sir");
+        System.out.println("My name is Sichao Quan");
         System.out.println();
         
-        System.out.println("My career ambitions:");
+        System.out.println("My career ambitions: ");
         System.out.println("-- Be more active on LinkedIn");
         System.out.println("-- Have a semester with no violations of academic integrity!");
 	System.out.println();	
 
-        System.out.println("My hobbies:");
+        System.out.println("My hobbies: ");
         System.out.println("-- Investing");
         System.out.println("-- Cooking");
         System.out.println("-- Reading/Watching TV");
@@ -64,4 +95,27 @@ public class CardTrick {
     
     }
 
+}
+class Card {
+    private int value;
+    private String suit;
+    
+    public static final String[] SUITS = {"Hearts", "Diamonds", "Clubs", "Spades"};
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    public String getSuit() {
+        return suit;
+    }
+
+    public void setSuit(String suit) {
+        this.suit = suit;
+    }
+    
 }
